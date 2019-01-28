@@ -36,7 +36,7 @@
                     <navigationItem key="navigationItem" id="qHS-2Z-7lv">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ks5-b0-8sq">
                             <connections>
-                                <segue destination="YNR-40-vTu" kind="show" id="mRm-Ck-PiA"/>
+                                <segue destination="YNR-40-vTu" kind="show" identifier="gameSegue" id="mRm-Ck-PiA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -77,6 +77,15 @@
                                     <action selector="cameraTapped:" destination="YNR-40-vTu" eventType="touchUpInside" id="xBY-uA-A53"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xP2-nj-JWF">
+                                <rect key="frame" x="165" y="352" width="45" height="30"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="addTapped:" destination="YNR-40-vTu" eventType="touchUpInside" id="NFz-gB-g0G"/>
+                                    <action selector="cameraTapped:" destination="YNR-40-vTu" eventType="touchUpInside" id="Nj5-yk-ZYv"/>
+                                    <action selector="deleteButton:" destination="YNR-40-vTu" eventType="touchUpInside" id="e8W-3N-3hC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -85,8 +94,10 @@
                             <constraint firstItem="ySu-Dl-8Aw" firstAttribute="centerX" secondItem="bMU-ab-P2g" secondAttribute="centerX" id="FQo-cC-H25"/>
                             <constraint firstItem="3QJ-AU-3LI" firstAttribute="centerX" secondItem="bMU-ab-P2g" secondAttribute="centerX" id="Hcq-tb-syy"/>
                             <constraint firstItem="5v5-Dl-seR" firstAttribute="centerX" secondItem="bMU-ab-P2g" secondAttribute="centerX" id="RU1-qa-gbF"/>
+                            <constraint firstItem="xP2-nj-JWF" firstAttribute="centerX" secondItem="bMU-ab-P2g" secondAttribute="centerX" id="cbb-1C-e6L"/>
                             <constraint firstItem="5v5-Dl-seR" firstAttribute="width" secondItem="ySu-Dl-8Aw" secondAttribute="width" id="qcb-lV-RV7"/>
                             <constraint firstItem="3QJ-AU-3LI" firstAttribute="top" secondItem="5v5-Dl-seR" secondAttribute="bottom" constant="20" id="uTf-3h-Slr"/>
+                            <constraint firstItem="xP2-nj-JWF" firstAttribute="top" secondItem="3QJ-AU-3LI" secondAttribute="bottom" constant="8" id="xKY-if-e64"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ha6-FC-K42"/>
                     </view>
@@ -105,6 +116,8 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="addUpdateButton" destination="3QJ-AU-3LI" id="HZA-Sb-hkQ"/>
+                        <outlet property="deleteButton" destination="xP2-nj-JWF" id="zht-8u-LI7"/>
                         <outlet property="gameImageView" destination="ySu-Dl-8Aw" id="cFl-pz-tjl"/>
                         <outlet property="titleTextField" destination="5v5-Dl-seR" id="3mm-fd-LkF"/>
                     </connections>
