@@ -5,7 +5,6 @@
 //  Created by Luke Newsome on 1/27/19.
 //  Copyright © 2019 Zappy Code. All rights reserved.
 //
-
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -16,7 +15,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var tableView: UITableView!
     
-    var games : [Game] = []
+    var games : [Game?] = []
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return games.count
     }
@@ -24,12 +23,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         let game = games[indexPath.row]
-        cell.textLabel?.text = game.title
-        cell.imageView?.image = UIImage(data: game.image as! Data)
+        cell.textLabel?.text = game!.title
+        cell.imageView?.image = UIImage(data: game!.image as! Data)
         return cell
-     }
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         let game = games[indexPath.row]
+        let game = games[indexPath.row]
         performSegue(withIdentifier: "gameSegue", sender: game)
     }
     
@@ -46,19 +45,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.dataSource = self
         tableView.delegate = self
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         do {
-      games = try context.fetch(Game.fetchRequest())
-   print(games)
+            games = try context.fetch(Game.fetchRequest())
+            print(games)
             tableView.reloadData()
         }   catch {
-    
+            
         }
-       
+        
         
     }
-
+    
 }
-

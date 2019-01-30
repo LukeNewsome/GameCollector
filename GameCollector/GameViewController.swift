@@ -7,13 +7,11 @@
 //
 
 import UIKit
-
 class GameViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var deleteButton: UIButton!
     
-    
-    
+    var games : [Game?] = []
     @IBOutlet weak var addUpdateButton: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var gameImageView: UIImageView!
@@ -30,23 +28,23 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             gameImageView.image = UIImage(data: game!.image as! Data)
             titleTextField.text = game!.title
             
-    addUpdateButton.setTitle("Update", for: .normal)
+            addUpdateButton.setTitle("Update", for: .normal)
         } else {
             deleteButton.isHidden = true
         }
-
-    }
         
+    }
+    
     
     
     
     // ACTIONS ARE HERE
     
-   
+    
     @IBAction func photosTapped(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
-        }
+    }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         
@@ -57,20 +55,20 @@ class GameViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     
     @IBAction func cameraTapped(_ sender: Any) {
-       
+        
     }
     @IBAction func addTapped(_ sender: Any) {
-       
+        
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         let game = Game(context: context)
         game.title = titleTextField.text
         game.image = gameImageView.image!.pngData()
-    (UIApplication.shared.delegate as! AppDelegate).saveContext()
-    
-       navigationController!.popViewController(animated: true)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+        navigationController!.popViewController(animated: true)
     }
     
-   
+    
     
 }
