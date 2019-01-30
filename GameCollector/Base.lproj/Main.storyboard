@@ -84,6 +84,7 @@
                                     <action selector="addTapped:" destination="YNR-40-vTu" eventType="touchUpInside" id="NFz-gB-g0G"/>
                                     <action selector="cameraTapped:" destination="YNR-40-vTu" eventType="touchUpInside" id="Nj5-yk-ZYv"/>
                                     <action selector="deleteButton:" destination="YNR-40-vTu" eventType="touchUpInside" id="e8W-3N-3hC"/>
+                                    <action selector="deleteTapped:" destination="YNR-40-vTu" eventType="touchUpInside" id="965-e4-O0R"/>
                                 </connections>
                             </button>
                         </subviews>
